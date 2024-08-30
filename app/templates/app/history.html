@@ -28,6 +28,22 @@
 
             For date, use the filter date: "d/m/Y H:i:s".
             -->
+
+            {% if transactions %}
+                {% for transaction in transactions %}
+                    <li class="list-group-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Date: {{ transaction.datetime|date:"d/m/Y H:i:s" }}</p>
+                                <p>Status: {{ transaction.status }}</p>
+                                <p>Balance After: {{ transaction.amount }}</p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No transactions found.</li>
+            {% endif %}
         </ul>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
